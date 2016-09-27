@@ -42,11 +42,18 @@
                     0.000   0.000   0.000   1.000  
                 </param>
                
-                <param name ="matrixE2J">  
+                   <param name ="matrixM2J"> 
                     1.000   0.000   0.000   0.000
-                    0.000   1.000   0.000   0.000
+                    0.000  +1.000   0.000   0.000
                     0.000   0.000   1.000   0.000
                     0.000   0.000   0.000   1.000   
+                </param>
+               
+                 <param name ="matrixE2J">  
+                    1.000   0.000   0.000   0.000   0.000   0.000
+                    0.000   1.000   0.000   0.000   0.000   0.000
+                    0.000   0.000   1.000   0.000   0.000   0.000
+                    0.000   0.000   0.000   1.000   0.000   0.000   
                 </param>
 
                 
@@ -69,13 +76,24 @@
                     <param name="type">             qenc                qenc                qenc                qenc                    </param>
                     <param name="port">             CONN:P2             CONN:P3             CONN:P4             CONN:P5                 </param>
                     <param name="position">         none                atmotor             atmotor             atmotor                 </param>
-                </group>  
+                </group>
+                <param name="joint2set">                 0                   1                   2                   3                       </param>   
             </group>    
             
-            <group name="JOINTSETS">
-                <param name="list">                 0                   1                   2                   3                       </param> 
-            </group>
             
+
+            <group name="JOINTSETS_CFG">       <!-- JOINTSET NUMBER      0                  1           2           3-->
+                    <param name="canDoTrqCtrl">                         0                  1            1           0   </param>
+                    <param name="useMotorSpeedFbk">                     1                  0            1           0   </param>
+                    <param name="pidOutputType">                        vel                pwm          iqq         pwm </param>
+            </group> 
+            
+            
+            <group name="JOINTSETS_CONSTRAINTS"><!-- JOINTSET NUMBER      0                  1          2 -->
+                    <param name="name">                                  cerhand            none        eomc_jsetconstraint_trifid trifid</param>
+                    <param name="param1">                                1                  0           100.0                       40.4</param>
+                    <param name="param2">                                0                  0           3                           80.8</param>
+            </group> 
         </group>
            
     </group>
